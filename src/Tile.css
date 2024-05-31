@@ -1,0 +1,23 @@
+.tile {
+    justify-content: center;
+    align-self: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    text-align: center;
+}
+
+.tile-image {
+    width: 50%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.tile-text {
+    margin-top: 10px;
+    font-size: 50px;
+    color: #333;
+}
