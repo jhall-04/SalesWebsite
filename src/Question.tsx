@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Question.css';
 
 interface QuestionProps {
     text: string;
     onAnswerSelected: (index: number) => void;
+    selectedAnswer: number | null;
 }
 
-const Question: React.FC<QuestionProps> = ({ text, onAnswerSelected }) => {
+const Question: React.FC<QuestionProps> = ({ text, onAnswerSelected, selectedAnswer }) => {
     const [answer, setAnswer] = useState<number | null>(null);
+
+    useEffect(() => {
+        setAnswer(selectedAnswer);
+    }, [selectedAnswer]);
 
     const handleBubbleClick = (index: number) => {
         setAnswer(index);

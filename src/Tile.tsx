@@ -2,15 +2,17 @@ import React from 'react'
 import './Tile.css';
 
 interface TileProps {
-    imageSrc: string;
-    text: string;
+    level: string;
+    name: string;
+    description: string;
 }
 
-const Tile: React.FC<TileProps> = ({ imageSrc, text }) => {
+const Tile: React.FC<TileProps> = ({ level, name, description }) => {
     return (
         <div className='tile'>
-            <img className="tile-image" src={imageSrc} alt={text} />
-            <div className='tile-text'>{text}</div>
+            <div className='tile-text'>{name}</div>
+            <div className='level-text'>{level}</div>
+            <div className='level-description'>{description}</div>
         </div>
     );
 }
