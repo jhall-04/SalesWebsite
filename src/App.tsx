@@ -120,6 +120,7 @@ function App() {
   const [page, setPage] = useState<number>(0);
   const [results, setResults] = useState<boolean>(false);
   const [tile, setTile] = useState<number>(0);
+  const [testing, setTesting] = useState<boolean>(false);
 
   const handleAnswerSelection = (questionIndex: number, answer: number) => {
     const updatedAnswers = [...selectedAnswers];
@@ -158,6 +159,11 @@ function App() {
 
   return (
     <div className="App">
+      {!testing && <div>
+        <img src="assets/salespng.png" alt="Sales Splash Page" className="splash-image" />
+        <button className="start-button" onClick={() => setTesting(true)}>Start Test</button>
+        </div>}
+      {testing && <div className="App">
       <header className="App-header">
         {page < questions.length && <h1 className="App-header-txt">FREE MARKET READINESS TEST</h1>}
         {page === questions.length && <h1 className="App-header-txt">RESULTS</h1>}
@@ -187,6 +193,7 @@ function App() {
       <div className="percentage">{Math.round((page / questions.length) * 100)}%</div>
         <progress className="progress" value={page} max={questions.length}></progress>
       </div>
+      </div>}
     </div>
   )
 }
