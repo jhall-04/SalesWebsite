@@ -71,6 +71,27 @@ html, body, #root, .App {
   background-color: darkblue;
 }
 
+.results {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.change-button {
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  padding: 150px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
 .floating-block {
   position: fixed;
   bottom: 0;

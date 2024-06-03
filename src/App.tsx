@@ -119,6 +119,7 @@ function App() {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [page, setPage] = useState<number>(0);
   const [results, setResults] = useState<boolean>(false);
+  const [tile, setTile] = useState<number>(0);
 
   const handleAnswerSelection = (questionIndex: number, answer: number) => {
     const updatedAnswers = [...selectedAnswers];
@@ -139,6 +140,22 @@ function App() {
     window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
+  const leftTile = () => {
+    if (tile === 0) {
+      setTile(5);
+    } else {
+      setTile(tile - 1);
+    }
+  }
+
+  const rightTile = () => {
+    if (tile === 5) {
+      setTile(0);
+    } else {
+      setTile(tile + 1);
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -153,13 +170,17 @@ function App() {
         {page < questions.length && <Question text={questions[page][4]} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
         {page < questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
         {page === questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
-        {page === questions.length && !results && <Tile name="Overall Level" description={explanations[0][calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
-        {page === questions.length && results && <Tile name={profiles[0][1]} description={explanations[0][calculateResults(0)]} level={categories[calculateResults(0)]} />}
-        {page === questions.length && results && <Tile name={profiles[1][1]} description={explanations[1][calculateResults(1)]} level={categories[calculateResults(1)]} />}
-        {page === questions.length && results && <Tile name={profiles[2][1]} description={explanations[2][calculateResults(2)]} level={categories[calculateResults(2)]} />}
-        {page === questions.length && results && <Tile name={profiles[3][1]} description={explanations[3][calculateResults(3)]} level={categories[calculateResults(3)]} />}
-        {page === questions.length && results && <Tile name={profiles[4][1]} description={explanations[4][calculateResults(4)]} level={categories[calculateResults(4)]} />}
-        {page === questions.length && results && <Tile name={profiles[5][1]} description={explanations[5][calculateResults(5)]} level={categories[calculateResults(5)]} />}
+        {page === questions.length && !results && <Tile name="Overall Level" description="Description of Company Level." level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
+        {page === questions.length && results && <div className="results">
+          <button className="change-button" onClick={leftTile}>{"<"}</button>
+          {tile === 0 && <Tile name={profiles[0][1]} description={explanations[0][calculateResults(0)]} level={categories[calculateResults(0)]} />}
+          {tile === 1 && <Tile name={profiles[1][1]} description={explanations[1][calculateResults(1)]} level={categories[calculateResults(1)]} />}
+          {tile === 2 && <Tile name={profiles[2][1]} description={explanations[2][calculateResults(2)]} level={categories[calculateResults(2)]} />}
+          {tile === 3 && <Tile name={profiles[3][1]} description={explanations[3][calculateResults(3)]} level={categories[calculateResults(3)]} />}
+          {tile === 4 && <Tile name={profiles[4][1]} description={explanations[4][calculateResults(4)]} level={categories[calculateResults(4)]} />}
+          {tile === 5 && <Tile name={profiles[5][1]} description={explanations[5][calculateResults(5)]} level={categories[calculateResults(5)]} />}
+          <button className="change-button" onClick={rightTile}>{">"}</button>
+        </div>}
         {page === questions.length && !results && <button className="result-button" onClick={handleViewResults}>View Detailed Results</button>}
       </div>
       <div className="floating-block">
