@@ -23,6 +23,7 @@ const Question: React.FC<QuestionProps> = ({ text, onAnswerSelected, selectedAns
         <div className='question'>
             <span className="bubble-text">{text}</span>
             <div className="bubbles">
+                <div className='ad-text'>DISAGREE</div>
                 {[...Array(7)].map((_, index) => (
                     <div
                         key={index}
@@ -30,8 +31,8 @@ const Question: React.FC<QuestionProps> = ({ text, onAnswerSelected, selectedAns
                         onClick={() => handleBubbleClick(index)}
                     />
                 ))}
+                <div className='ad-text'>AGREE</div>
             </div>
-            <div className="ad-text">DISAGREE AGREE</div>
             <hr className='line' />
         </div>
     );
