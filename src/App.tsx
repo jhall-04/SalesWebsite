@@ -159,9 +159,14 @@ function App() {
 
   return (
     <div className="App">
-      {!testing && <div>
-        <img src="assets/salespng.png" alt="Sales Splash Page" className="splash-image" />
-        <button className="start-button" onClick={() => setTesting(true)}>Start Test</button>
+      {!testing && <div className='title-page'>
+        <img src="https://github.com/jhall-04/SalesWebsite/blob/master/src/assets/salespng.png?raw=true" alt="Sales Splash Page" className="splash-image" />
+        <div className="title-div">
+        <p className="title">To learn more about how we can help you meet your</p>
+        <p className="title">growth goals, take our free online go-to-market</p>
+        <p className="title">readiness test below</p>
+        </div>
+        <button className="start-button" onClick={() => setTesting(true)}>Take the test</button>
         </div>}
       {testing && <div className="App">
       <header className="App-header">

@@ -12,6 +12,37 @@ html, body, #root, .App {
   height: 100%;
 }
 
+.title-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: white;
+}
+
+.title-div {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.splash-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 0px;
+}
 
 .App-header {
   background-color: #4CA09A;
