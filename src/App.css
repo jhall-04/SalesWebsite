@@ -46,6 +46,7 @@ html, body, #root, .App {
 }
 
 .start-button {
+  background-color: #4CA09A;
   margin-top: 25px;
 }
 
