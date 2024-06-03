@@ -31,6 +31,7 @@ const Question: React.FC<QuestionProps> = ({ text, onAnswerSelected, selectedAns
                     />
                 ))}
             </div>
+            <div className="ad-text">DISAGREE AGREE</div>
             <hr className='line' />
         </div>
     );

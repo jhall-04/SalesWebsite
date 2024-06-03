@@ -58,6 +58,13 @@
     background-color: blue;
     }
 
+    .ad-text {
+        margin-left: 0px;
+        margin-top: -30px;
+        color: #333;
+        word-spacing: 250px;
+    }
+
     .line {
         width: 100%;
         justify-content: center;

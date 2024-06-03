@@ -137,7 +137,7 @@ function App() {
 
   const handleViewResults = () => {
     setResults(true);
-    window.scrollTo({ top: 200, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const leftTile = () => {
