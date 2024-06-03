@@ -98,7 +98,17 @@ function calculateResults(index: number) {
   const score = scores[index];
   if (score < 15) {
     return 0;
-  } else if (score < 29) {
+  } else if (score < 30) {
+    return 1;
+  } else {
+    return 2;
+  }
+}
+
+function calculateOverallResults(score: number) {
+  if (score < 90) {
+    return 0;
+  } else if (score < 180) {
     return 1;
   } else {
     return 2;
@@ -108,6 +118,7 @@ function calculateResults(index: number) {
 function App() {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [page, setPage] = useState<number>(0);
+  const [results, setResults] = useState<boolean>(false);
 
   const handleAnswerSelection = (questionIndex: number, answer: number) => {
     const updatedAnswers = [...selectedAnswers];
@@ -120,7 +131,12 @@ function App() {
     scores.push(totalTally);
     setPage(page + 1);
     setSelectedAnswers(Array(5).fill(null));
-    window.scrollTo({ top: 250, behavior: 'smooth' });
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
+  const handleViewResults = () => {
+    setResults(true);
+    window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
   return (
@@ -137,13 +153,14 @@ function App() {
         {page < questions.length && <Question text={questions[page][4]} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
         {page < questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
         {page === questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
-        {page === questions.length && <Tile name={profiles[0][1]} description={explanations[0][calculateResults(0)]} level={categories[calculateResults(0)]} />}
-        {page === questions.length && <Tile name={profiles[1][1]} description={explanations[1][calculateResults(1)]} level={categories[calculateResults(1)]} />}
-        {page === questions.length && <Tile name={profiles[2][1]} description={explanations[2][calculateResults(2)]} level={categories[calculateResults(2)]} />}
-        {page === questions.length && <Tile name={profiles[3][1]} description={explanations[3][calculateResults(3)]} level={categories[calculateResults(3)]} />}
-        {page === questions.length && <Tile name={profiles[4][1]} description={explanations[4][calculateResults(4)]} level={categories[calculateResults(4)]} />}
-        {page === questions.length && <Tile name={profiles[5][1]} description={explanations[5][calculateResults(5)]} level={categories[calculateResults(5)]} />}
-        {page === questions.length && <button className="result-button" onClick={calculateTotal}>View Detailed Results</button>}
+        {page === questions.length && !results && <Tile name="Overall Level" description={explanations[0][calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
+        {page === questions.length && results && <Tile name={profiles[0][1]} description={explanations[0][calculateResults(0)]} level={categories[calculateResults(0)]} />}
+        {page === questions.length && results && <Tile name={profiles[1][1]} description={explanations[1][calculateResults(1)]} level={categories[calculateResults(1)]} />}
+        {page === questions.length && results && <Tile name={profiles[2][1]} description={explanations[2][calculateResults(2)]} level={categories[calculateResults(2)]} />}
+        {page === questions.length && results && <Tile name={profiles[3][1]} description={explanations[3][calculateResults(3)]} level={categories[calculateResults(3)]} />}
+        {page === questions.length && results && <Tile name={profiles[4][1]} description={explanations[4][calculateResults(4)]} level={categories[calculateResults(4)]} />}
+        {page === questions.length && results && <Tile name={profiles[5][1]} description={explanations[5][calculateResults(5)]} level={categories[calculateResults(5)]} />}
+        {page === questions.length && !results && <button className="result-button" onClick={handleViewResults}>View Detailed Results</button>}
       </div>
       <div className="floating-block">
       <div className="percentage">{Math.round((page / questions.length) * 100)}%</div>
