@@ -103,9 +103,9 @@ function calculateResults(index: number) {
 }
 */
 function calculateOverallResults(score: number) {
-  if (score < 90) {
+  if (score <= 60) {
     return 0;
-  } else if (score < 180) {
+  } else if (score <= 135) {
     return 1;
   } else {
     return 2;
@@ -163,7 +163,6 @@ function App() {
       setTile(tile - 1);
     }
     window.scrollTo({ top: 200, behavior: 'smooth' });
-    console.log(scores[tile]);
   }
 
   const rightTile = () => {
@@ -173,7 +172,6 @@ function App() {
       setTile(tile + 1);
     }
     window.scrollTo({ top: 200, behavior: 'smooth' });
-    console.log(scores[tile]);
   }
 
   const startTesting = () => {
@@ -237,6 +235,11 @@ function App() {
             </div>
             <div className='breakdown-progress'>
               <progress className="score-bar" value={scores[tile]} max={30}></progress>
+              <h2 className="score-text-emg">Emerging</h2>
+              <hr className='basic-line' />
+              <h2 className="score-text-bsc">Basic</h2>
+              <hr className='advanced-line' />
+              <h2 className="score-text-adv">Advanced</h2>
             </div>
             </div>
           <div className="benchmark-buttons">

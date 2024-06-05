@@ -59,18 +59,18 @@ html, body, #root, .App {
 }
 
 .categories-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  justify-items: center;
+  width: 60%
 }
 
 .category {
   font-size: 18px;
   color: black;
-  width: 60%;
   text-align: center;
   margin-top: 0px;
   margin-bottom: 10px;
@@ -153,6 +153,24 @@ html, body, #root, .App {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+}
+
+.basic-line, .advanced-line {
+  width: 98px;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+  border-color: transparent;
+}
+
+.basic-line {
+  margin-right: -10px;
+  margin-top: 175px;
+}
+
+.advanced-line {
+  margin-right: -10px;
+  margin-top: 384px;
 }
 
 .change-button {
@@ -247,15 +265,43 @@ progress::-webkit-progress-value {
 }
 
 .breakdown-progress {
-  margin-left: 10px;
-  justify-content: right;
-  width: 30%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%; /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
 }
 
 .score-bar {
+  position: absolute;
   border-radius: 90px; 
-  width: 400px;
+  width: 500px;
   height: 100px;
   margin-top: 250px;
   transform: rotate(270deg);
+}
+
+.score-text-emg {
+  position: absolute;
+  font-size: 25px;
+  color: black;
+  margin-top: 510px;
+  margin-left: 240px;
+}
+
+.score-text-bsc {
+  position: absolute;
+  font-size: 25px;
+  color: black;
+  margin-top: 349px;
+  margin-left: 190px;
+}
+
+.score-text-adv {
+  position: absolute;
+  font-size: 25px;
+  color: black;
+  margin-top: 140px;
+  margin-left: 245px;
 }
