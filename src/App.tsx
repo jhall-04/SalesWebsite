@@ -90,7 +90,7 @@ const descriptions = [
 const categories = ['Emerging', 'Basic', 'Advanced']
 
 const scores = [0, 0, 0, 0, 0, 0];
-
+/*
 function calculateResults(index: number) {
   const score = scores[index];
   if (score < 15) {
@@ -101,7 +101,7 @@ function calculateResults(index: number) {
     return 2;
   }
 }
-
+*/
 function calculateOverallResults(score: number) {
   if (score < 90) {
     return 0;
