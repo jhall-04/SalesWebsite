@@ -3,58 +3,46 @@ import './App.css'
 import Question from './Question'
 import Tile from './Tile'
 
-const questions = [
-  [
-    'Your sales team can easily quantify the economic value proposition of your offering(s)',
-    'Your sales team is prepared to answer the questions "Why Change", "Why Change Now" and "Why Our Company"',
-    'In the sales process, you utilize value calculators to illustrate defined value from your offering(s)',
-    'Your business strategy is centered around a defined unit economic model',
-    'You are confident that any member of your organization can communicate the key elements of value that your company brings in less than 1 minute'
-  ],
-  [
-    'There is a defined progression of offerings beyond the first engagement with a new client',
-    'There are mechanisms in place to capture feedback on your company\'s percived value and performance for its clients',
-    'There are easily referencable data and proof points for your offering\'s efficacy and scalability',
-    'There is a unified methodology for project management and delivery that is communcated well to the buyer',
-    'Clear and consistent pricing guidelines are in place for each offering '
-  ],
-  [
-    'There are defined Ideal Customer Profiles for each offering',
-    'The lead generation process is consistent and formalized',
-    'There is a large variety of sales enablement tools and collateral for the sales team to draw from',
-    'Marketing metrics are defined and managed too',
-    'Your company produces a stream of marketing material distributed accross a variety of channels'
-  ],
-  [
-    'Every sales team member follows a single, consistent sales process',
-    'There are formal sales quotas/responsibilites and incentives for the sales team',
-    'There are defined metrics for sales performace and success that are managed to',
-    'There is significant collaboration between your organization and the buyer in the sales process to tailor the final solution',
-    'Salespeople consistently collaborate on deals with sales leadership and your organization\'s subject matter experts'
-  ],
-  [
-    'Your organization has a proven delivery capability with key referencable clients',
-    'There are defined skills/knowledge requirements to deliver your solutions',
-    'There are defined account management incentives to facilitate expanding accounts',
-    'Project management protocols are formal with a defined methodology',
-    'Customer satisfaction is consistently montored and managed with key success metrics' 
-  ],
-  [
-    'Inbound and outbound marketing is supported by marketing automation software',
-    'Your organization utilizes lead geneartion software to find target accounts and buyers',
-    'Your organization utlizes its Customer Relationship Management software consistently',
-    'A Learning Management System is in place to upskill sales and delivery teams',
-    'Project management software is consistently utilized to ensure on-time task completion and deliverable quality'
-  ]
+let questions = [
+  ['Your sales team can easily quantify the economic value proposition of your offering(s)', 0],
+  ['Your sales team is prepared to answer the questions "Why Change", "Why Change Now" and "Why Our Company"', 0],
+  ['In the sales process, you utilize value calculators to illustrate defined value from your offering(s)', 0],
+  ['Your business strategy is centered around a defined unit economic model', 0],
+  ['You are confident that any member of your organization can communicate the key elements of value that your company brings in less than 1 minute', 0],
+  ['There is a defined progression of offerings beyond the first engagement with a new client', 1],
+  ['There are mechanisms in place to capture feedback on your company\'s percived value and performance for its clients', 1],
+  ['There are easily referencable data and proof points for your offering\'s efficacy and scalability', 1],
+  ['There is a unified methodology for project management and delivery that is communcated well to the buyer', 1],
+  ['Clear and consistent pricing guidelines are in place for each offering', 1],
+  ['There are defined Ideal Customer Profiles for each offering', 2],
+  ['The lead generation process is consistent and formalized', 2],
+  ['There is a large variety of sales enablement tools and collateral for the sales team to draw from', 2],
+  ['Marketing metrics are defined and managed too', 2],
+  ['Your company produces a stream of marketing material distributed accross a variety of channels', 2],
+  ['Every sales team member follows a single, consistent sales process', 3],
+  ['There are formal sales quotas/responsibilites and incentives for the sales team', 3],
+  ['There are defined metrics for sales performace and success that are managed to', 3],
+  ['There is significant collaboration between your organization and the buyer in the sales process to tailor the final solution', 3],
+  ['Salespeople consistently collaborate on deals with sales leadership and your organization\'s subject matter experts', 3],
+  ['Your organization has a proven delivery capability with key referencable clients', 4],
+  ['There are defined skills/knowledge requirements to deliver your solutions', 4],
+  ['There are defined account management incentives to facilitate expanding accounts', 4],
+  ['Project management protocols are formal with a defined methodology', 4],
+  ['Customer satisfaction is consistently montored and managed with key success metrics', 4],
+  ['Inbound and outbound marketing is supported by marketing automation software', 5],
+  ['Your organization utilizes lead geneartion software to find target accounts and buyers', 5],
+  ['Your organization utlizes its Customer Relationship Management software consistently', 5],
+  ['A Learning Management System is in place to upskill sales and delivery teams', 5],
+  ['Project management software is consistently utilized to ensure on-time task completion and deliverable quality', 5]
 ]
 
 const profiles = [
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOr5Th6pmAfvtKw1J-uoGGvarY3G4hNFIlTw&s', 'Value Prop'],
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2xQKQYwUnSCXVyiiL2ddsMpD5vPn_i-lc3g&s', 'Offering'],
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXTVYiy6pUTHRRo321egOz556XlE8N3vchkQ&s', 'Marketing'],
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTslgN7rhwfko-FpmvobR0gc0pLglwIKHXhVg&s', 'Sales'],
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVjtzAcs-wEzg-RNOOp735N-DIeceMDGbPRw&s', 'Delivery'],
-  ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfaYUesIjKb0a-qHsHkGFqa-bH7i2TyOi5Ug&s', 'IT Enablement']
+  'Value Proposition',
+  'Offering',
+  'Sales',
+  'Marketing',
+  'Delivery',
+  'Enablement Technology'
 ]
 
 const explanations = [
@@ -90,9 +78,18 @@ const explanations = [
   ]
 ]
 
+const descriptions = [
+  "The Value Proposition is critical in determining how a company's offerings drive its strategic advantages and meet customer needs effectively. This component acts as a crucial element in aligning the company's goals and capabilities in preparation for growth and market engagement through the FUSE process.",
+  "The Offering component involves collecting feedback from customers regularly, using that feedback to iterate and refine every aspect of the go-to-market plan.FUSE emphasizes adjusting strategies and offerings based on this feedback to better align with market needs and customer expectations. This dynamic, iterative approach ensures that offerings remain competitive and relevant, contributing to increased sales and customer satisfaction. Over time, this component aids in the scaling of sales performance by utilizing replicable and successful processes",
+  "The fastest growing companies create a shared vision with the buyer during the sales process. Ideating alongside a buyer and proposing a plan built with their input creates win-win solutions for everyone. When executed correctly, the proposal has become the buyer’s proposal as much as the seller’s proposal. The sales component encompasses topics such as finding your buyer coach, selling value versus price, and of course adhering to a formal sales process.",
+  "The Marketing component of the FUSE process focuses on aligning highly differentiated offerings with target markets. It involves adapting rapidly to changing market conditions and capturing opportunities. Through repeated cycles of evaluation and adjustment, companies can stay aligned with market trends, identify organizational gaps, and enhance marketing effectiveness. Ultimately, the Marketing component in the FUSE process leads to increased customer acquisition and accelerated sales growth, driving continuous improvements and scaling efforts.",
+  "The Delivery component of the FUSE process emphasizes streamlined execution of company offerings to achieve positive customer outcomes and feedback. Organizations are encouraged to implement effective training and refine processes continuously, such as customer onboarding, to further enhance their delivery standards. Maintaining an advanced delivery component involves ongoing improvement and adaptation to ensure it meets or exceeds industry standards and expectations. The goal is near-perfect execution and exceptional market reputation.",
+  "The Enablement Technology component of the FUSE process refers to the integration and utilization of automation tools to streamline business processes. These tools help in setting clear milestones and process steps that ensure consistency across an organization. Automation increases productivity, reduces errors, and improves compliance, which are vital for effective scaling."
+]
+
 const categories = ['Emerging', 'Basic', 'Advanced']
 
-const scores: number[] = []
+const scores = [0, 0, 0, 0, 0, 0];
 
 function calculateResults(index: number) {
   const score = scores[index];
@@ -115,8 +112,19 @@ function calculateOverallResults(score: number) {
   }
 }
 
+function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
+}
+
+questions = shuffleArray(questions);
+
 function App() {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
+  const [selectedQuestions, setSelectedQuestions] = useState<number[]>([0, 0, 0, 0, 0]);
   const [page, setPage] = useState<number>(0);
   const [results, setResults] = useState<boolean>(false);
   const [tile, setTile] = useState<number>(0);
@@ -129,16 +137,23 @@ function App() {
   };
 
   const calculateTotal = () => {
-    const totalTally = selectedAnswers.reduce((acc, curr) => acc + curr, 0);
-    scores.push(totalTally);
+    for (let i = 0; i < 5; i++) {
+      scores[selectedQuestions[i]] += selectedAnswers[i];
+    }
+
     setPage(page + 1);
+    if (page < questions.length / 5 - 1){
+      const next = [+questions[0 + (page + 1) * 5][1], +questions[1 + (page + 1) * 5][1], +questions[2 + (page + 1) * 5][1], +questions[3 + (page + 1) * 5][1], +questions[4 + (page + 1) * 5][1]]
+      setSelectedQuestions(next);
+    }
     setSelectedAnswers(Array(5).fill(null));
     window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
   const handleViewResults = () => {
     setResults(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setPage(page + 1)
+    window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
   const leftTile = () => {
@@ -147,6 +162,8 @@ function App() {
     } else {
       setTile(tile - 1);
     }
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+    console.log(scores[tile]);
   }
 
   const rightTile = () => {
@@ -155,49 +172,85 @@ function App() {
     } else {
       setTile(tile + 1);
     }
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+    console.log(scores[tile]);
+  }
+
+  const startTesting = () => {
+    setTesting(true);
+    setSelectedQuestions([+questions[0][1], +questions[1][1], +questions[2][1], +questions[3][1], +questions[4][1]]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   return (
     <div className="App">
       {!testing && <div className='title-page'>
+        <div className="image-container">
         <img src="https://github.com/jhall-04/SalesWebsite/blob/master/src/assets/salespng.png?raw=true" alt="Sales Splash Page" className="splash-image" />
+        </div>
         <div className="title-div">
-        <p className="title">To learn more about how we can help you meet your</p>
-        <p className="title">growth goals, take our free online go-to-market</p>
-        <p className="title">readiness test below</p>
-        <button className="start-button" onClick={() => setTesting(true)}>Take the test</button>
+        <p className="title">{"The SalesSparx FUSE process is a systematic approach designed to enhance go-to-market (GTM) "}
+        maturity and accelerate sales growth. The start of the process is maturity gap analysis to identify a
+        company's strengths and weaknesses accross 6 key components:</p>
+        <div className="categories-container">
+          <p className="category">Value Proposition: This focuses on clearly communicating the unique benefits of a product or service to the target market.</p>
+          <p className="category">Offering: This involves continually refining and improving the products or services based on customer feedback and market demands.</p>
+          <p className="category">Marketing: This emphasizes crafting and executing data-driven marketing strategies to effectively reach and engage target audiences.</p>
+          <p className="category">Sales: This component focuses on developing an efficient and scalable sales process leveraging data insights for enhanced performance.</p>
+          <p className="category">Delivery: This ensures that the company's offerings are delivered consistently and reliably, meeting or exceeding customer expectations.</p>
+          <p className="category">Enablement Technology: This includes adopting and optimizing advanced technologies to streamline operations and support strategic goals.</p>
+        </div>
+        <p className="title-footer">To learn more about how we can help you meet your
+        growth goals, take our free online go-to-market
+        readiness test below</p>
+        <button className="start-button" onClick={startTesting}>Take the test</button>
         </div>
         </div>}
       {testing && <div className="App">
       <header className="App-header">
-        {page < questions.length && <h1 className="App-header-txt">FREE MARKET READINESS TEST</h1>}
-        {page === questions.length && <h1 className="App-header-txt">RESULTS</h1>}
+        {page < questions.length / 5 && <h1 className="App-header-txt">FREE MARKET READINESS TEST</h1>}
+        {page === questions.length / 5 && <h1 className="App-header-txt">RESULTS</h1>}
+        {page === questions.length / 5 + 1 && <h1 className="App-header-txt">STRENGTHS BREAKDOWN</h1>}
       </header>
       <div className="App-content">
-        {page < questions.length && <Question text={questions[page][0]} onAnswerSelected={(answer) => handleAnswerSelection(0, answer)} selectedAnswer={selectedAnswers[0]} />}
-        {page < questions.length && <Question text={questions[page][1]} onAnswerSelected={(answer) => handleAnswerSelection(1, answer)} selectedAnswer={selectedAnswers[1]} />}
-        {page < questions.length && <Question text={questions[page][2]} onAnswerSelected={(answer) => handleAnswerSelection(2, answer)} selectedAnswer={selectedAnswers[2]} />}
-        {page < questions.length && <Question text={questions[page][3]} onAnswerSelected={(answer) => handleAnswerSelection(3, answer)} selectedAnswer={selectedAnswers[3]} />}
-        {page < questions.length && <Question text={questions[page][4]} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
-        {page < questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
-        {page === questions.length - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
-        {page === questions.length && !results && <Tile name="Overall Level" description="Description of Company Level." level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
-        {page === questions.length && results && <div className="results">
+        {page < questions.length / 5 && <Question text={questions[0 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(0, answer)} selectedAnswer={selectedAnswers[0]} />}
+        {page < questions.length / 5 && <Question text={questions[1 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(1, answer)} selectedAnswer={selectedAnswers[1]} />}
+        {page < questions.length / 5 && <Question text={questions[2 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(2, answer)} selectedAnswer={selectedAnswers[2]} />}
+        {page < questions.length / 5 && <Question text={questions[3 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(3, answer)} selectedAnswer={selectedAnswers[3]} />}
+        {page < questions.length / 5 && <Question text={questions[4 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
+        {page < questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
+        {page === questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
+        {page === questions.length / 5 && !results && <Tile name="Overall Level" description="Description of Company Level." level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
+        {results && <div className="results">
+          <div className="breakdown-container">
+            <div className="breakdown">
+            <div className="breakdown-text">
+            <h1 className="breakdown-title">{profiles[tile]}</h1>
+            <p className="benchmark-description">{descriptions[tile]}</p>
+            <h1 className="breakdown-title">Readiness Benchmarks</h1>
+            <p className="benchmark-description">Emerging:</p>
+            <p className="benchmark-description">{explanations[tile][0]}</p>
+            <p className="benchmark-description">Basic:</p>
+            <p className="benchmark-description">{explanations[tile][1]}</p>
+            <p className="benchmark-description">Advanced:</p>
+            <p className="benchmark-description">{explanations[tile][2]}</p>
+            </div>
+            <div className='breakdown-progress'>
+              <progress className="score-bar" value={scores[tile]} max={30}></progress>
+            </div>
+            </div>
+          <div className="benchmark-buttons">
           <button className="change-button" onClick={leftTile}>{"<"}</button>
-          {tile === 0 && <Tile name={profiles[0][1]} description={explanations[0][calculateResults(0)]} level={categories[calculateResults(0)]} />}
-          {tile === 1 && <Tile name={profiles[1][1]} description={explanations[1][calculateResults(1)]} level={categories[calculateResults(1)]} />}
-          {tile === 2 && <Tile name={profiles[2][1]} description={explanations[2][calculateResults(2)]} level={categories[calculateResults(2)]} />}
-          {tile === 3 && <Tile name={profiles[3][1]} description={explanations[3][calculateResults(3)]} level={categories[calculateResults(3)]} />}
-          {tile === 4 && <Tile name={profiles[4][1]} description={explanations[4][calculateResults(4)]} level={categories[calculateResults(4)]} />}
-          {tile === 5 && <Tile name={profiles[5][1]} description={explanations[5][calculateResults(5)]} level={categories[calculateResults(5)]} />}
           <button className="change-button" onClick={rightTile}>{">"}</button>
+          </div>
+          </div>
         </div>}
-        {page === questions.length && !results && <button className="result-button" onClick={handleViewResults}>View Detailed Results</button>}
+        {page === questions.length / 5 && !results && <button className="result-button" onClick={handleViewResults}>View Detailed Results</button>}
       </div>
-      <div className="floating-block">
-      <div className="percentage">{Math.round((page / questions.length) * 100)}%</div>
-        <progress className="progress" value={page} max={questions.length}></progress>
-      </div>
+      {page < questions.length / 5 && <div className="floating-block">
+      <div className="percentage">{Math.round((page / (questions.length / 5)) * 100)}%</div>
+        <progress className="progress" value={page} max={questions.length / 5}></progress>
+      </div>}
       </div>}
     </div>
   )
