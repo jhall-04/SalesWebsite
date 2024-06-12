@@ -135,7 +135,7 @@ function App() {
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [selectedQuestions, setSelectedQuestions] = useState<number[]>([0, 0, 0, 0, 0]);
   const [page, setPage] = useState<number>(0);
-  const [results, setResults] = useState<boolean>(false);
+  //const [results, setResults] = useState<boolean>(false);
   const [tile, setTile] = useState<number>(0);
   const [testing, setTesting] = useState<boolean>(false);
   const [emergeDropped, setEmergeDropped] = useState<boolean>(false);
@@ -164,13 +164,13 @@ function App() {
     setSelectedAnswers(Array(5).fill(null));
     window.scrollTo({ top: 200, behavior: 'smooth' });
   }
-
+/*
   const handleViewResults = () => {
     setResults(true);
     setPage(page + 1)
     window.scrollTo({ top: 200, behavior: 'smooth' });
   }
-
+*/
   const leftTile = () => {
     setAdvDropped(false);
     setBasicDropped(false);
@@ -183,7 +183,6 @@ function App() {
     } else {
       setTile(tile - 1);
     }
-    window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
   const rightTile = () => {
@@ -198,7 +197,6 @@ function App() {
     } else {
       setTile(tile + 1);
     }
-    window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 
   const startTesting = () => {
@@ -272,7 +270,8 @@ function App() {
         {page < questions.length / 5 && <Question text={questions[4 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
         {page < questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
         {page === questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
-        {page === questions.length / 5 && !results && 
+        {page === questions.length / 5 && 
+        <div className='full-results'>
         <div className="results-summary">
           <h2 className="results-title">Results are in! Here's how your company is progressing in each category of Go-To-Market readiness</h2>
           <div className="results-container">
@@ -288,8 +287,7 @@ function App() {
             </div>
           </div>
         </div>  
-        }
-        {results && <div className="results">
+         <div className="results">
           <div className="breakdown-container">
             <div className="breakdown">
             <div className="breakdown-text">
@@ -326,8 +324,8 @@ function App() {
           <button className="change-button" onClick={rightTile}>{">"}</button>
           </div>
           </div>
+        </div>
         </div>}
-        {page === questions.length / 5 && !results && <button className="result-button" onClick={handleViewResults}>View Detailed Results</button>}
       </div>
       {page < questions.length / 5 && <div className="floating-block">
       <div className="percentage">{Math.round((page / (questions.length / 5)) * 100)}%</div>
