@@ -96,7 +96,7 @@ const summary = [
   "Enablement Technology: This includes adopting and optimizing advanced technologies to streamline operations and support strategic goals."
 ]
 
-const categories = ['Emerging', 'Basic', 'Advanced']
+// const categories = ['Emerging', 'Basic', 'Advanced']
 
 const scores = [0, 0, 0, 0, 0, 0];
 /*
@@ -110,7 +110,7 @@ function calculateResults(index: number) {
     return 2;
   }
 }
-*/
+
 function calculateOverallResults(score: number) {
   if (score <= 60) {
     return 0;
@@ -120,7 +120,7 @@ function calculateOverallResults(score: number) {
     return 2;
   }
 }
-
+*/
 function shuffleArray<T>(array: T[]): T[] {
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
