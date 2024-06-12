@@ -1,36 +1,130 @@
 .tile {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-self: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    align-items: center;
+    width: 370px;
+    height: 300px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.tile-info {
+    width: 60%;
+}
+
+.tile-name {
+    font-size: 24px;
+    color: black;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.tile-image {
-    width: 50%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 50%;
+.tile-summary {
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-.tile-text {
-    margin-top: 10px;
-    font-size: 50px;
-    color: #333;
+.tile-progress {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.level-text {
-    margin-top: 10px;
-    font-size: 30px;
-    color: #333;
+.tile-score-bar {
+    transform: rotate(270deg);
+    width: 200px;
+    height: 50px;
+    margin-right: -70px;
+    margin-left: -70px;
 }
 
-.level-description {
+.labels {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 200px;
+    margin-left: -70px;
+    margin-right: -70px;
+}
+
+.tile-score-text-emg, .tile-score-text-adv, .tile-score-text-bsc {
+    font-size: 15px;
+    color: black;
+    text-align: center;
     margin-top: 10px;
-    font-size: 20px;
-    color: #333;
+    margin-bottom: 10px;
+}
+
+.lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    }
+
+.tile-advanced-line {
+    position: absolute;
+    width: 49px;
+    height: 4px;
+    margin-left: 80px;
+    margin-top: 120px;
+    z-index: 1000;
+    border-color: transparent;
+    background-color: black;
+}
+
+.tile-basic-line {
+    position: absolute;
+    width: 49px;
+    height: 4px;
+    margin-left: 80px;
+    margin-top: 290px;
+    z-index: 1000;
+    border-color: transparent;
+    background-color: black;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 200px;
+}
+
+.tile-score-text-adv {
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 5px;
+}
+
+.tile-score-text-bsc {
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: -30px;
+    margin-bottom: -20px;
+}
+
+.tile-score-text-emg {
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 10px;
 }

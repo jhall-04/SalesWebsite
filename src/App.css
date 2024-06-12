@@ -155,6 +155,22 @@ html, body, #root, .App {
   margin-top: 20px;
 }
 
+.results-title {
+  font-size: 25px;
+  color: black;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.results-tiles {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .basic-line, .advanced-line {
   width: 98px;
   height: 2px;
@@ -258,6 +274,42 @@ progress::-webkit-progress-value {
   text-align: left;
   margin-top: 0px;
   margin-bottom: 10px;
+}
+
+.benchmark-description-title {
+  font-size: 18px;
+  color: black;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  background-color: #4CA09A;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.breakdown-dropdown {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.dropdown-button {
+  height: 30px;
+  padding-top: 0px;
+  background: transparent;
+  margin-left: -50px;
+  border: 0;
+}
+
+.dropdown-button:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.dropdown-button:focus {
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
 }
 
 .benchmark-buttons {

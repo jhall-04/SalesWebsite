@@ -87,6 +87,15 @@ const descriptions = [
   "The Enablement Technology component of the FUSE process refers to the integration and utilization of automation tools to streamline business processes. These tools help in setting clear milestones and process steps that ensure consistency across an organization. Automation increases productivity, reduces errors, and improves compliance, which are vital for effective scaling."
 ]
 
+const summary = [
+  "This focuses on clearly communicating the unique benefits of a product or service to the target market.",
+  "This focuses on clearly communicating the unique benefits of a product or service to the target market.",
+  "This component focuses on developing an efficient and scalable sales process, leveraging data insights for enhanced performance.",
+  "This emphasizes crafting and executing data-driven marketing strategies to effectively reach and engage target audiences.",
+  "This ensures that the company's offerings are delivered consistently and reliably, meeting or exceeding customer expectations.",
+  "Enablement Technology: This includes adopting and optimizing advanced technologies to streamline operations and support strategic goals."
+]
+
 const categories = ['Emerging', 'Basic', 'Advanced']
 
 const scores = [0, 0, 0, 0, 0, 0];
@@ -129,6 +138,12 @@ function App() {
   const [results, setResults] = useState<boolean>(false);
   const [tile, setTile] = useState<number>(0);
   const [testing, setTesting] = useState<boolean>(false);
+  const [emergeDropped, setEmergeDropped] = useState<boolean>(false);
+  const [basicDropped, setBasicDropped] = useState<boolean>(false);
+  const [advDropped, setAdvDropped] = useState<boolean>(false);
+  const [buttonTextEmg, setButtonTextEmg] = useState<string>("v");
+  const [buttonTextBsc, setButtonTextBsc] = useState<string>("v");
+  const [buttonTextAdv, setButtonTextAdv] = useState<string>("v");
 
   const handleAnswerSelection = (questionIndex: number, answer: number) => {
     const updatedAnswers = [...selectedAnswers];
@@ -157,6 +172,12 @@ function App() {
   }
 
   const leftTile = () => {
+    setAdvDropped(false);
+    setBasicDropped(false);
+    setEmergeDropped(false);
+    setButtonTextAdv("v");
+    setButtonTextBsc("v");
+    setButtonTextEmg("v");
     if (tile === 0) {
       setTile(5);
     } else {
@@ -166,6 +187,12 @@ function App() {
   }
 
   const rightTile = () => {
+    setAdvDropped(false);
+    setBasicDropped(false);
+    setEmergeDropped(false);
+    setButtonTextAdv("v");
+    setButtonTextBsc("v");
+    setButtonTextEmg("v");
     if (tile === 5) {
       setTile(0);
     } else {
@@ -178,6 +205,33 @@ function App() {
     setTesting(true);
     setSelectedQuestions([+questions[0][1], +questions[1][1], +questions[2][1], +questions[3][1], +questions[4][1]]);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const dropEmerging = () => {
+    setEmergeDropped(!emergeDropped);
+    if (buttonTextEmg === "v") {
+      setButtonTextEmg("^");
+    } else {
+      setButtonTextEmg("v");
+    }
+  }
+
+  const dropBasic = () => {
+    setBasicDropped(!basicDropped);
+    if (buttonTextBsc === "v") {
+      setButtonTextBsc("^");
+    } else {
+      setButtonTextBsc("v");
+    }
+  }
+
+  const dropAdv = () => {
+    setAdvDropped(!advDropped);
+    if (buttonTextAdv === "v") {
+      setButtonTextAdv("^");
+    } else {
+      setButtonTextAdv("v");
+    }
   }
 
   return (
@@ -208,7 +262,7 @@ function App() {
       <header className="App-header">
         {page < questions.length / 5 && <h1 className="App-header-txt">FREE MARKET READINESS TEST</h1>}
         {page === questions.length / 5 && <h1 className="App-header-txt">RESULTS</h1>}
-        {page === questions.length / 5 + 1 && <h1 className="App-header-txt">STRENGTHS BREAKDOWN</h1>}
+        {page === questions.length / 5 + 1 && <h1 className="App-header-txt">{profiles[tile]}</h1>}
       </header>
       <div className="App-content">
         {page < questions.length / 5 && <Question text={questions[0 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(0, answer)} selectedAnswer={selectedAnswers[0]} />}
@@ -218,7 +272,23 @@ function App() {
         {page < questions.length / 5 && <Question text={questions[4 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(4, answer)} selectedAnswer={selectedAnswers[4]} />}
         {page < questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Next</button>}
         {page === questions.length / 5 - 1 && <button className="next-button" onClick={calculateTotal}>Submit</button>}
-        {page === questions.length / 5 && !results && <Tile name="Overall Level" description="Description of Company Level." level={categories[calculateOverallResults(scores.reduce((accumulator, currentValue) => accumulator + currentValue, 0))]} />}
+        {page === questions.length / 5 && !results && 
+        <div className="results-summary">
+          <h2 className="results-title">Results are in! Here's how your company is progressing in each category of Go-To-Market readiness</h2>
+          <div className="results-container">
+            <div className="results-tiles">
+              <Tile name={profiles[0]} description={summary[0]} progress={scores[0]} />
+              <Tile name={profiles[1]} description={summary[1]} progress={scores[1]} />
+              <Tile name={profiles[2]} description={summary[2]} progress={scores[2]} />
+            </div>
+            <div className="results-tiles">
+              <Tile name={profiles[3]} description={summary[3]} progress={scores[3]} />
+              <Tile name={profiles[4]} description={summary[4]} progress={scores[4]} />
+              <Tile name={profiles[5]} description={summary[5]} progress={scores[5]} />
+            </div>
+          </div>
+        </div>  
+        }
         {results && <div className="results">
           <div className="breakdown-container">
             <div className="breakdown">
@@ -226,12 +296,21 @@ function App() {
             <h1 className="breakdown-title">{profiles[tile]}</h1>
             <p className="benchmark-description">{descriptions[tile]}</p>
             <h1 className="breakdown-title">Readiness Benchmarks</h1>
-            <p className="benchmark-description">Emerging:</p>
-            <p className="benchmark-description">{explanations[tile][0]}</p>
-            <p className="benchmark-description">Basic:</p>
-            <p className="benchmark-description">{explanations[tile][1]}</p>
-            <p className="benchmark-description">Advanced:</p>
-            <p className="benchmark-description">{explanations[tile][2]}</p>
+            <div className="breakdown-dropdown">
+            <p className="benchmark-description-title">Emerging:</p>
+            <button className="dropdown-button" onClick={dropEmerging}>{buttonTextEmg}</button>
+            </div>
+            {emergeDropped && <p className="benchmark-description">{explanations[tile][0]}</p>}
+            <div className="breakdown-dropdown">
+            <p className="benchmark-description-title">Basic:</p>
+            <button className="dropdown-button" onClick={dropBasic}>{buttonTextBsc}</button>
+            </div>
+            {basicDropped && <p className="benchmark-description">{explanations[tile][1]}</p>}
+            <div className="breakdown-dropdown">
+            <p className="benchmark-description-title">Advanced:</p>
+            <button className="dropdown-button" onClick={dropAdv}>{buttonTextAdv}</button>
+            </div>
+            {advDropped && <p className="benchmark-description">{explanations[tile][2]}</p>}
             </div>
             <div className='breakdown-progress'>
               <progress className="score-bar" value={scores[tile]} max={30}></progress>
