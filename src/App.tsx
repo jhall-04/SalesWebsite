@@ -291,8 +291,10 @@ function App() {
           <div className="breakdown-container">
             <div className="breakdown">
             <div className="breakdown-text">
+            <div className="breakdown-container-1">
             <h1 className="breakdown-title">{profiles[tile]}</h1>
             <p className="benchmark-description">{descriptions[tile]}</p>
+            </div>
             <h1 className="breakdown-title">Readiness Benchmarks</h1>
             <div className="breakdown-dropdown">
             <p className="benchmark-description-title">Emerging:</p>
