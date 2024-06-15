@@ -96,21 +96,31 @@ const summary = [
   "Enablement Technology: This includes adopting and optimizing advanced technologies to streamline operations and support strategic goals."
 ]
 
+const improvements = [
+  [["Optimizing the value proposition to clearly answer the Three Whys.", "Ensuring everyone within the company can articulate a consistent value proposition.", "Defining buyer pain points", "Producing quantifiable evidence to support claims about solution value"], ["Strengthening the alignment between the value proposition and the company's strategic goals and market positioning.", "Ensuring the value proposition is consistently communicated across all sales and marketing channels.", "Utilizing customer and market feedback to continuously refine and adapt the value proposition.", "Integrating measurable outcomes and evidence to substantiate claims within the value proposition."]],
+  [["Identifying and filling gaps in your current product offerings to meet market expectations.", "Ensuring that the offering aligns with the company’s value proposition.", "Regularly gathering and incorporating customer feedback to refine offerings.", "Implementing consistent processes for developing and launching offerings."],["Enhancing the product development process to be more proactive and market-driven.", "Improving the alignment between the offerings and the advanced value proposition.", "Introducing innovative features and services to differentiate from competitors.", "Establishing comprehensive metrics to assess the success and impact of the offerings."]],
+  [["Implementing a structured sales process that can be consistently followed across the team.", "Training sales representatives to align their efforts with the company’s value proposition and offerings.", "Utilizing customer feedback to improve sales methodologies and approaches.", "Setting challenging yet achievable sales targets (stretch goals) to drive performance and innovation."],["Establishing a data-driven approach to track and analyze sales performance.", "Developing advanced sales training programs for employee skill enhancement.", "Implementing customer relationship strategies to maintain and deepen customer relationships.", "Investing in sophisticated CRM and sales automation tools."]],
+  [["Improving market segmentation to better target potential customers.", "Enhancing branding efforts to establish a stronger market presence.", "Increasing collaboration between marketing and sales teams to ensure consistent messaging.", "Utilizing data analytics to measure and optimize marketing performance."],["Enhancing the data analytics capabilities to better segment and target audiences. Creating more sophisticated and targeted marketing campaigns.", "Incorporating advanced marketing automation tools to increase efficiency and reach.", "Increasing collaboration between marketing and sales teams to ensure seamless execution."]],
+  [["Standardizing and documenting delivery processes.", "Improving consistency in execution of delivery.", "Implementing training programs for employees focused on delivery.", "Gathering and using customer feedback to improve delivery standards."],["Improving coordination between different departments during project delivery.", "Investing in advanced project management tools and methodologies. Establishing metrics for evaluating and improving delivery performance. Enhancing customer communication and support throughout the delivery phase."]],
+  [["Implementing a Customer Relationship Management (CRM) system to track and manage customer interactions effectively.", "Investing in marketing automation tools to increase brand awareness and lead generation.", "Utilizing sales automation tools to streamline sales processes and improve efficiency.", "Developing a standardized process for technology adoption and integration across the company."],["Implementing advanced data analytics to measure technology impact accurately.", "Integrating artificial intelligence (AI) for predictive insights and decision-making.", "Automating more complex and personalized customer interactions.", "Ensuring seamless integration between various technology platforms."]]
+]
+
 // const categories = ['Emerging', 'Basic', 'Advanced']
 
 const scores = [0, 0, 0, 0, 0, 0];
-/*
+
 function calculateResults(index: number) {
   const score = scores[index];
-  if (score < 15) {
+  if (score < 10) {
     return 0;
-  } else if (score < 30) {
+  } else if (score < 23) {
     return 1;
   } else {
     return 2;
   }
 }
 
+/*
 function calculateOverallResults(score: number) {
   if (score <= 60) {
     return 0;
@@ -127,6 +137,27 @@ function shuffleArray<T>(array: T[]): T[] {
       [array[i], array[j]] = [array[j], array[i]]; // Swap elements
   }
   return array;
+}
+
+function getImprovements(index: number) {
+  const stage = calculateResults(index);
+  if (stage < 2) {
+    const improvement = improvements[index][stage];
+    return improvement;
+  } else {
+    return ["You are at the advanced stage!"]
+  }
+}
+
+function levelProgress(index: number) {
+  const stage = calculateResults(index); 
+  if (stage === 0) {
+    return "Emerging --> Basic";
+  } else if (stage === 1) {
+    return "Basic --> Advanced";
+  } else {
+    return "Advanced";
+  }
 }
 
 questions = shuffleArray(questions);
@@ -171,33 +202,16 @@ function App() {
     window.scrollTo({ top: 200, behavior: 'smooth' });
   }
 */
-  const leftTile = () => {
+
+  const resetReslut = () => {
     setAdvDropped(false);
     setBasicDropped(false);
     setEmergeDropped(false);
     setButtonTextAdv("v");
     setButtonTextBsc("v");
     setButtonTextEmg("v");
-    if (tile === 0) {
-      setTile(5);
-    } else {
-      setTile(tile - 1);
-    }
   }
 
-  const rightTile = () => {
-    setAdvDropped(false);
-    setBasicDropped(false);
-    setEmergeDropped(false);
-    setButtonTextAdv("v");
-    setButtonTextBsc("v");
-    setButtonTextEmg("v");
-    if (tile === 5) {
-      setTile(0);
-    } else {
-      setTile(tile + 1);
-    }
-  }
 
   const startTesting = () => {
     setTesting(true);
@@ -232,6 +246,34 @@ function App() {
     }
   }
 
+  const tileClick = (index: number) => {
+    return () => {
+      setTile(index);
+      resetReslut();
+      window.scrollTo({ top: 1000, behavior: 'smooth' });
+      const area = calculateResults(index);
+      if (area === 0) {
+        setEmergeDropped(true);
+        setButtonTextEmg("^");
+      } else if (area === 1) {
+        setBasicDropped(true);
+        setButtonTextBsc("^");
+      } else {
+        setAdvDropped(true);
+        setButtonTextAdv("^");
+      }
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 200, behavior: 'smooth' });
+  }
+
+  const showSummary = () => {
+    setPage(page + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   return (
     <div className="App">
       {!testing && <div className='title-page'>
@@ -257,11 +299,10 @@ function App() {
         </div>
         </div>}
       {testing && <div className="App">
-      <header className="App-header">
+      {page <= questions.length / 5 && <header className="App-header">
         {page < questions.length / 5 && <h1 className="App-header-txt">FREE MARKET READINESS TEST</h1>}
         {page === questions.length / 5 && <h1 className="App-header-txt">RESULTS</h1>}
-        {page === questions.length / 5 + 1 && <h1 className="App-header-txt">{profiles[tile]}</h1>}
-      </header>
+      </header> }
       <div className="App-content">
         {page < questions.length / 5 && <Question text={questions[0 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(0, answer)} selectedAnswer={selectedAnswers[0]} />}
         {page < questions.length / 5 && <Question text={questions[1 + page * 5][0].toString()} onAnswerSelected={(answer) => handleAnswerSelection(1, answer)} selectedAnswer={selectedAnswers[1]} />}
@@ -276,14 +317,26 @@ function App() {
           <h2 className="results-title">Results are in! Here's how your company is progressing in each category of Go-To-Market readiness</h2>
           <div className="results-container">
             <div className="results-tiles">
+              <button className='tile-button' onClick={tileClick(0)}>
               <Tile name={profiles[0]} description={summary[0]} progress={scores[0]} />
+              </button>
+              <button className='tile-button' onClick={tileClick(1)}>
               <Tile name={profiles[1]} description={summary[1]} progress={scores[1]} />
+              </button>
+              <button className='tile-button' onClick={tileClick(2)}>
               <Tile name={profiles[2]} description={summary[2]} progress={scores[2]} />
+              </button>
             </div>
             <div className="results-tiles">
+              <button className='tile-button' onClick={tileClick(3)}>
               <Tile name={profiles[3]} description={summary[3]} progress={scores[3]} />
+              </button>
+              <button className='tile-button' onClick={tileClick(4)}>
               <Tile name={profiles[4]} description={summary[4]} progress={scores[4]} />
+              </button>
+              <button className='tile-button' onClick={tileClick(5)}>
               <Tile name={profiles[5]} description={summary[5]} progress={scores[5]} />
+              </button>
             </div>
           </div>
         </div>  
@@ -322,12 +375,91 @@ function App() {
             </div>
             </div>
           <div className="benchmark-buttons">
-          <button className="change-button" onClick={leftTile}>{"<"}</button>
-          <button className="change-button" onClick={rightTile}>{">"}</button>
+          <div className='top-button-container'>
+          <button className='return-button' onClick={scrollToTop}>Return to Top</button>
+          </div>
+          <div className='summary-button-container'>
+          <button className='return-button' onClick={showSummary}>Show Summary</button>
+          </div>
           </div>
           </div>
         </div>
         </div>}
+        {page > questions.length / 5 &&
+          <div className="summary-page">
+            <h1>Go-To-Market Readiness Report</h1>
+            <div>The SalesSparx FUSE process is a systematic approach designed to enhance go-to-market (GTM) maturity and accelerate sales growth. The start of the process is a maturity gap analysis to identify a company's strengths and weaknesses accross 6 key components:</div>
+            <div className="results-container">
+              <div className="results-tiles">
+                <Tile name={profiles[0]} description={summary[0]} progress={scores[0]} />
+                <Tile name={profiles[1]} description={summary[1]} progress={scores[1]} />
+                <Tile name={profiles[2]} description={summary[2]} progress={scores[2]} />
+              </div>
+              <div className="results-tiles">
+                <Tile name={profiles[3]} description={summary[3]} progress={scores[3]} />
+                <Tile name={profiles[4]} description={summary[4]} progress={scores[4]} />
+                <Tile name={profiles[5]} description={summary[5]} progress={scores[5]} />
+              </div>
+            </div>
+            <div>Something about how based on our experience, we’ve identified the most effective strategies for improving your score at each level</div>
+            <div className='improvements'>
+              <div className='progress-titles'>
+                <h2>{profiles[0]}</h2>
+                <h2>{levelProgress(0)}</h2>
+              </div>
+              <ul>
+                {getImprovements(0).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <div className='progress-titles'>
+                <h2>{profiles[1]}</h2>
+                <h2>{levelProgress(1)}</h2>
+              </div>
+              <ul>
+                {getImprovements(1).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <div className='progress-titles'>
+                <h2>{profiles[2]}</h2>
+                <h2>{levelProgress(2)}</h2>
+              </div>
+              <ul>
+                {getImprovements(2).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <div className='progress-titles'>
+                <h2>{profiles[3]}</h2>
+                <h2>{levelProgress(3)}</h2>
+              </div>
+              <ul>
+                {getImprovements(3).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <div className='progress-titles'>
+                <h2>{profiles[4]}</h2>
+                <h2>{levelProgress(4)}</h2>
+              </div>
+              <ul>
+                {getImprovements(4).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <div className='progress-titles'>
+                <h2>{profiles[5]}</h2>
+                <h2>{levelProgress(5)}</h2>
+              </div>
+              <ul>
+                {getImprovements(5).map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        }
       </div>
       {page < questions.length / 5 && <div className="floating-block">
       <div className="percentage">{Math.round((page / (questions.length / 5)) * 100)}%</div>

@@ -167,7 +167,8 @@ html, body, #root, .App {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 .basic-line, .advanced-line {
@@ -252,7 +253,7 @@ progress::-webkit-progress-value {
   justify-content: center;
   width: 100%;
   margin-top: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   margin-left: 10px;
 }
 
@@ -332,7 +333,29 @@ progress::-webkit-progress-value {
 
 .benchmark-buttons {
   margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  width: 70%;
 }
+
+.return-button {
+  background-color: #4CA09A;
+  color: black;
+}
+
+.top-button-container {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.summary-button-container {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}
+
 
 .breakdown-progress {
   position: relative;
@@ -375,4 +398,49 @@ progress::-webkit-progress-value {
   color: black;
   margin-top: 140px;
   margin-left: 245px;
+}
+
+.tile-button {
+  background-color: white;
+  border-color: transparent;
+  padding: 0px 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.tile-button:hover {
+  background-color: lightgray;
+}
+
+.tile-button:focus {
+  background-color: lightgray;
+  border-color: transparent;
+  outline: none;
+}
+
+.summary-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.improvements {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  color: black;
+  text-align: left;
+}
+
+.progress-titles {
+  display: flex;
+  flex-direction: row;
+  color: black;
+}
+
+.progress-titles h2 {
+  width: 100%;
 }
